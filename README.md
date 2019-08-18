@@ -97,6 +97,6 @@ https://code.vipkid.com.cn/hujun1/auto-example-test
 
 ​    一、二级缓存，由静态字段引用，第一次使用时加载完成，程序关闭被回收，一级缓存自动开启，且读者不能进行配置操作，二级缓存可以配置开启，参考com.fengxiao.auto.example.AdvancedTests.test4()；
 
-##六、最后  
+## 六、最后  
 
 ​    希望读者一定要运行完com.fengxiao.auto.example.BasicFunctionTests、com.fengxiao.auto.example.AdvancedTests上面的所有测试用例，这样才能非常熟练地使用auto-example；当然这些都只是作者想到的一些简单测试，读者还能在此基础上自由发挥创造力，将auto-example使用在更多的场景下，enjoy! 😋
