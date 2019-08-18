@@ -41,9 +41,6 @@ public class SimpleExampleGenerator implements ExampleGenerator {
     Example example = new Example(autoExample.value());
     @SuppressWarnings("unchecked")
     Map<Integer, List<FieldToCriterionHandlerMapping>> map = (LinkedHashMap<Integer, List<FieldToCriterionHandlerMapping>>)PRIMARY_CACHE.getObject(parameter.getClass());
-    if (map != null) {
-      System.out.println("——————————————————————命中一级缓存");
-    }
     if (null == map) {
       synchronized (PRIMARY_CACHE) {
         if (null == PRIMARY_CACHE.getObject(parameter.getClass())) {

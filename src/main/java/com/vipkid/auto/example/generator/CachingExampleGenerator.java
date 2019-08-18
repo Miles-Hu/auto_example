@@ -28,9 +28,6 @@ public class CachingExampleGenerator implements ExampleGenerator {
     //使用更有效率的二级缓存缓存，需要入参实现hashCode(), equals()方法
     if (autoExample.useSecondaryCache()) {
       Example example = (Example)SECONDARY_CACHE.getObject(parameter);
-      if (example != null) {
-        System.out.println("——————————————————————命中二级缓存！");
-      }
       if (example == null) {
         synchronized (SECONDARY_CACHE) {
           if (null == SECONDARY_CACHE.getObject(parameter)) {
