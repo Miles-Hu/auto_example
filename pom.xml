@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.vipfengxiao</groupId>
-    <artifactId>auto-example</artifactId>
+    <artifactId>auto-example-springboot-starter</artifactId>
     <packaging>jar</packaging>
     <version>1.0.2-SNAPSHOT</version>
 
