@@ -71,7 +71,7 @@ public PageResponse simpleNormalManyEqualToTest(@RequestBody NormalManyEqualToDt
   }
 ```
 
-Auto-example可以自动进行非null,可以看到auto-example帮我们节省了大量重复的判断代码，自动生成Example在某种程度上可以理解为自动生成动态sql，有了auto-example，从此不用再写这些烦人的if-else来手动生成动态sql啦；解放你的双手🤲O(∩_∩)O~~；
+Auto-example可以自动进行非null和空串判断，可以看到auto-example帮我们节省了大量重复的判断代码，自动生成Example在某种程度上可以理解为自动生成动态sql，有了auto-example，从此不用再写这些烦人的if-else来手动生成动态sql啦；解放你的双手🤲O(∩_∩)O~~；
 
 ## 三、更多功能
 

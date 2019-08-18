@@ -89,39 +89,15 @@ public class SimpleExampleGenerator implements ExampleGenerator {
     }
     for (Field field : declaredFields) {
       field.setAccessible(true);
-      Object fieldValue;
-      try {
-        fieldValue = field.get(parameter);
-      } catch (IllegalAccessException e) {
-        throw new AutoExampleException(e);
-      }
       Annotation[] annotations = field.getAnnotations();
-      if (annotations.length == 0) {
+      if (annotations.length == 0 || !CriterionAnnotationRegistry.containsAnyOne(annotations)) {
         List<FieldToCriterionHandlerMapping> fieldToCriterionHandlerMappings = map.get(0);
         addToMap(fieldToCriterionHandlerMappings,map,AndEqualTo.class.getName(),field,0);
-        continue;
-      }
-      boolean isIgnored = false;
-      for (Annotation annotation : annotations) {
-        if (annotation instanceof Ignore) {
-          isIgnored = true;
-        }
-      }
-      if (isIgnored) {
         continue;
       }
       for (Annotation annotation : annotations) {
         String name = annotation.getClass().getInterfaces()[0].getName();
         if (!CriterionAnnotationRegistry.contains(name)) {
-          continue;
-        }
-        //这4个注解不需要field有值，指定字段即可
-        boolean skipField = (null == fieldValue || ((fieldValue instanceof String) && "".equals(fieldValue)))
-            && !(annotation instanceof AndIsNull )
-            && !(annotation instanceof AndIsNotNull)
-            && !(annotation instanceof OrIsNull)
-            && !(annotation instanceof OrIsNotNull);
-        if (skipField) {
           continue;
         }
         Class<? extends Annotation> aClass = annotation.annotationType();

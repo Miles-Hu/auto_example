@@ -25,6 +25,7 @@ import com.vipkid.auto.example.annotation.OrNotEqualTo;
 import com.vipkid.auto.example.annotation.OrNotIn;
 import com.vipkid.auto.example.annotation.OrNotLike;
 
+import java.lang.annotation.Annotation;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -67,6 +68,16 @@ public class CriterionAnnotationRegistry {
 
   public static boolean contains(String annotationName) {
     return criterionAnnotatinSet.contains(annotationName);
+  }
+
+  public static boolean containsAnyOne(Annotation[] annotations) {
+    for (Annotation annotation : annotations) {
+      boolean contains = contains(annotation.getClass().getInterfaces()[0].getName());
+      if (contains) {
+        return true;
+      }
+    }
+    return false;
   }
 
 }
