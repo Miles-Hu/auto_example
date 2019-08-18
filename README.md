@@ -14,7 +14,7 @@
 </dependency>
 ```
 
-2、在需要自动生成Example的RequestDto类上面加上@AutoExample()注解，并在注解上面指明跟数据库表对应的Bean的Class对象，假设有如下RequestDto：
+2、在需要自动生成Example的RequestDto类上面加上@AutoExample()注解，并在注解上面指明跟数据库表对应的Bean的Class对象，假设有如下RequestDto(定义：springMVC将json串反序列化到RequestDto上面)：
 
 ```java
 @AutoExample(AdamResource.class)
@@ -87,4 +87,14 @@ https://code.vipkid.com.cn/hujun1/auto-example-test
 
 ​    在com.fengxiao.auto.example.AdvancedTests中，test2()展示了如何完成orderBy查询，test3()展示了如何完成distinct查询，test4()展示了如何使用auto-example的二级缓存(一级缓存是默认开启的)，test5()展示了使用一级缓存、二级缓存、不使用auto-example的性能对比，在作者的机器上，刚开始运行时一级缓存性能较弱，二级缓存和不使用auto-example的性能几乎相同，随着项目运行时间增长，一级缓存性能开始变好，接近其他两者，test6()展示了auto-example跟PageHelper分页插件兼容使用，test7(), test8()则是入门示例的展示；
 
-​    运行完com.fengxiao.auto.example.BasicFunctionTests、com.fengxiao.auto.example.AdvancedTests上面的所有测试用例，读者就能非常熟练地使用auto-example了，当然这些都只是作者想到的一些简单测试，读者还能在此基础上自由发挥创造力，将auto-example使用在更多的场景下，enjoy! 😋
+## 四、注意事项
+
+1、由于auto-example是根据RequestDto字段的顺序来生成Example的，所以RequestDto中的字段顺序是很重要的，读者在使用的时候需要特别注意；
+
+## 五、生命周期
+
+​    Auto-example是基于mybatis的Interceptor实现的，Interceptor由mybatis的Configuration保存，Configuration保存在SqlSessionFactory中，所以auto-example的Interceptor实例是一个SqlSessionFactory只有一个的；
+
+​    一、二级缓存，由静态字段引用，第一次使用时加载完成，程序关闭被回收；
+
+​    最后，运行完com.fengxiao.auto.example.BasicFunctionTests、com.fengxiao.auto.example.AdvancedTests上面的所有测试用例，读者就能非常熟练地使用auto-example了，当然这些都只是作者想到的一些简单测试，读者还能在此基础上自由发挥创造力，将auto-example使用在更多的场景下，enjoy! 😋
