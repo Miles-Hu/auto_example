@@ -60,5 +60,19 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>vipkid Team Repository snapshots</name>
+            <url>
+                http://maven.vipkid.com.cn/nexus/content/repositories/snapshots/
+            </url>
+        </snapshotRepository>
+        <repository>
+            <id>releases</id>
+            <name>releases</name>
+            <url>http://maven.vipkid.com.cn/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
