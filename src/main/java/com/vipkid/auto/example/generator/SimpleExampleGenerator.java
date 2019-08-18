@@ -116,7 +116,7 @@ public class SimpleExampleGenerator implements ExampleGenerator {
           continue;
         }
         //这4个注解不需要field有值，指定字段即可
-        boolean skipField = null == fieldValue
+        boolean skipField = (null == fieldValue || ((fieldValue instanceof String) && "".equals(fieldValue)))
             && !(annotation instanceof AndIsNull )
             && !(annotation instanceof AndIsNotNull)
             && !(annotation instanceof OrIsNull)

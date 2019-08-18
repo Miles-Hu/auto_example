@@ -29,7 +29,10 @@ public class FieldToCriterionHandlerMapping {
     } catch (IllegalAccessException e) {
       throw new AutoExampleException(e);
     }
-    criterionHandler.handle(criteria,field.getName(),value);
+    boolean nullOrEmptyString = null == value || ((value instanceof String) && "".equals(value));
+    if (!nullOrEmptyString) {
+      criterionHandler.handle(criteria,field.getName(),value);
+    }
   }
 
   public Field getField() {
