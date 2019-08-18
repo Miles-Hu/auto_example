@@ -95,6 +95,8 @@ https://code.vipkid.com.cn/hujun1/auto-example-test
 
 ​    Auto-example是基于mybatis的Interceptor实现的，Interceptor由mybatis的Configuration保存，Configuration保存在SqlSessionFactory中，所以auto-example的Interceptor实例是一个SqlSessionFactory只有一个的；
 
-​    一、二级缓存，由静态字段引用，第一次使用时加载完成，程序关闭被回收；
+​    一、二级缓存，由静态字段引用，第一次使用时加载完成，程序关闭被回收，一级缓存自动开启，且读者不能进行配置操作，二级缓存可以配置开启，参考com.fengxiao.auto.example.AdvancedTests.test4()；
 
-​    最后，运行完com.fengxiao.auto.example.BasicFunctionTests、com.fengxiao.auto.example.AdvancedTests上面的所有测试用例，读者就能非常熟练地使用auto-example了，当然这些都只是作者想到的一些简单测试，读者还能在此基础上自由发挥创造力，将auto-example使用在更多的场景下，enjoy! 😋
+##六、最后  
+
+​    希望读者一定要运行完com.fengxiao.auto.example.BasicFunctionTests、com.fengxiao.auto.example.AdvancedTests上面的所有测试用例，这样才能非常熟练地使用auto-example；当然这些都只是作者想到的一些简单测试，读者还能在此基础上自由发挥创造力，将auto-example使用在更多的场景下，enjoy! 😋
