@@ -85,7 +85,7 @@ https://code.vipkid.com.cn/hujun1/auto-example-test
 
 like查询，auto-example自动会在参数后面加"%"，所以是模糊参数的suffix查询，如果prefix也想模糊，需要读者自己在参数前面加"%"；
 
-in查询，目前只支持使用Iterable，不支持使用数组，因为tk-mybatis的Example实现是不支持数组的；
+in查询，目前只支持使用Collection，不支持使用数组，因为tk-mybatis的Example实现是不支持数组的；
 
 ​    如果读者运行完上面的测试用例，会发现这些测试用例都是使用一个Example$Criteria完成的查询，如果我想要2个，3个，甚至更多Example$Criteria完成查询，该怎么办呢？还是在上面的auto-example-test项目中，尝试运行com.fengxiao.auto.example.AdvancedTests.test1()(对应的Controller是com.fengxiao.auto.example.api.AutoExampleAdvancedServiceApi)，并且仔细观察控制台打印的sql语句，会发现实现多个Example$Criteria完成查询也是非常简单的；
 
