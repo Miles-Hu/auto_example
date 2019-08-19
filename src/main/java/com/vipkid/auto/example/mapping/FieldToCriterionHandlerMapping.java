@@ -58,6 +58,12 @@ public class FieldToCriterionHandlerMapping {
     this.criterionHandler = criterionHandler;
   }
 
+  /**
+   * 没有被@AndIsNull，@ANdIsNotNull，@OrIsNull, @OrIsNotNull注解标记的 null或者空串的property
+   * 以及被@Ignore标记的property，应该跳过
+   * @param value
+   * @return
+   */
   private boolean shouldSkip(Object value) {
     boolean nullOrEmptyString = null == value || ((value instanceof String) && "".equals(value));
     boolean canBeNullOrEmptyString = false;

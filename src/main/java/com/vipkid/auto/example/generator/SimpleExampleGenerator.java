@@ -38,17 +38,17 @@ public class SimpleExampleGenerator implements ExampleGenerator {
 
   @Override
   public Example generate(Object parameter, AutoExample autoExample) {
-    Example example = new Example(autoExample.value());
     @SuppressWarnings("unchecked")
     Map<Integer, List<FieldToCriterionHandlerMapping>> map = (LinkedHashMap<Integer, List<FieldToCriterionHandlerMapping>>)PRIMARY_CACHE.getObject(parameter.getClass());
     if (null == map) {
       synchronized (PRIMARY_CACHE) {
         if (null == PRIMARY_CACHE.getObject(parameter.getClass())) {
-          map = generateMap(parameter, example);
+          map = generateMap(parameter);
           PRIMARY_CACHE.putObject(parameter.getClass(),map);
         }
       }
     }
+    Example example = new Example(autoExample.value());
     for (Integer key : Objects.requireNonNull(map).keySet()) {
       Example.Criteria criteria = example.or();
       List<FieldToCriterionHandlerMapping> fieldToCriterionHandlerMappings = map.get(key);
@@ -78,10 +78,9 @@ public class SimpleExampleGenerator implements ExampleGenerator {
   /**
    * 创建一个Criteria的Map，因为一个查询可能涉及多个oredCriteria
    * @param parameter
-   * @param example
    * @return
    */
-  private Map<Integer, List<FieldToCriterionHandlerMapping>> generateMap(Object parameter, Example example) {
+  private Map<Integer, List<FieldToCriterionHandlerMapping>> generateMap(Object parameter) {
     Map<Integer, List<FieldToCriterionHandlerMapping>> map =new LinkedHashMap<>();
     Field[] declaredFields = parameter.getClass().getDeclaredFields();
     if (declaredFields.length == 0) {
@@ -90,6 +89,7 @@ public class SimpleExampleGenerator implements ExampleGenerator {
     for (Field field : declaredFields) {
       field.setAccessible(true);
       Annotation[] annotations = field.getAnnotations();
+      //没有注解或者没有auto-example定义的注解，默认放在第0个Example$Criteria中
       if (annotations.length == 0 || !CriterionAnnotationRegistry.containsAnyOne(annotations)) {
         List<FieldToCriterionHandlerMapping> fieldToCriterionHandlerMappings = map.get(0);
         addToMap(fieldToCriterionHandlerMappings,map,AndEqualTo.class.getName(),field,0);
@@ -105,6 +105,7 @@ public class SimpleExampleGenerator implements ExampleGenerator {
         try {
           Method value = aClass.getMethod("value");
           value.setAccessible(true);
+          //获取字段所属的Example$Criteria
           criterionNum = (Integer)value.invoke(annotation);
         } catch (Exception e) {
           throw new AutoExampleException("value field not found in annotation: " + name);

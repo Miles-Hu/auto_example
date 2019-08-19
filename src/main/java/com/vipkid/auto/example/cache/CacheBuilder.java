@@ -11,6 +11,11 @@ import org.apache.ibatis.cache.impl.PerpetualCache;
  */
 public class CacheBuilder {
 
+  /**
+   * 使用MyBatis的缓存实现
+   * @param name
+   * @return
+   */
   public static Cache getSafeLruCache(String name) {
     PerpetualCache perpetualCache = new PerpetualCache(name);
     //默认Lru存储1024个元素

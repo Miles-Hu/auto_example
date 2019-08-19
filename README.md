@@ -4,7 +4,7 @@
 
 ## 二、入门示例
 
-1、引入auto-example-spring-boot-starter包，代码如下，版本号目前可以选择1.0.2-SNAPSHOT：
+1、引入auto-example-spring-boot-starter包，代码如下，版本号目前可以选择1.0.2-SNAPSHOT，在引入本包之前，确保项目中已经有了mybatis, tk-mybatis的包，尽量使用最新版本：
 
 ```xml
 <dependency>
@@ -81,7 +81,11 @@ Auto-example可以自动进行非null和空串判断，可以看到auto-example�
 https://code.vipkid.com.cn/hujun1/auto-example-test
 下载该项目，使用IDEA打开，找到test/java目录下的com.fengxiao.auto.example.BasicFunctionTests类(对应的Controller是com.fengxiao.auto.example.controller.AutoExampleBasicController)，该类包含28个测试用例，尝试运行这些测试用例，并且观察项目运行打印的sql语句，能帮助你更好地理解和使用auto-example插件喔；😃
 
-其中test27()测试用例是updateByExampleSelective()的使用，该用例涉及到一个新注解@Ignore，该注解的含义是告知auto-example忽略该字段，特此说明；
+其中test27()测试用例是updateByExampleSelective()的使用，该用例涉及到一个新注解@Ignore，该注解的含义是告知auto-example忽略该字段
+
+like查询，auto-example自动会在参数后面加"%"，所以是模糊参数的suffix查询，如果prefix也想模糊，需要读者自己在参数前面加"%"；
+
+in查询，目前只支持使用Iterable，不支持使用数组，因为tk-mybatis的Example实现是不支持数组的；
 
 ​    如果读者运行完上面的测试用例，会发现这些测试用例都是使用一个Example$Criteria完成的查询，如果我想要2个，3个，甚至更多Example$Criteria完成查询，该怎么办呢？还是在上面的auto-example-test项目中，尝试运行com.fengxiao.auto.example.AdvancedTests.test1()(对应的Controller是com.fengxiao.auto.example.api.AutoExampleAdvancedServiceApi)，并且仔细观察控制台打印的sql语句，会发现实现多个Example$Criteria完成查询也是非常简单的；
 

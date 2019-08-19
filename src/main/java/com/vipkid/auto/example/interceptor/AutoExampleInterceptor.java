@@ -45,7 +45,8 @@ public class AutoExampleInterceptor implements Interceptor {
     Object parameter = args[1];
     Object exampleParam = parameter;
     if (parameter instanceof Map) {
-      //入参是多参数的情况下，mybatis会自动将参数组装成Map，这里写死为"example"，所以入参为多参的时候，修饰Example的注解要为@Param("example")
+      //入参是多参数的情况下，mybatis会自动将参数组装成Map，这里写死为"example"
+      //所以入参为多参的时候，修饰Example的注解要为@Param("example")
       //tk-mybatis的多参数入参遵循这个规则
       Map parameterMap = (Map) parameter;
       exampleParam = parameterMap.get("example");
