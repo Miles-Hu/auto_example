@@ -48,7 +48,15 @@ public class SimpleExampleGenerator implements ExampleGenerator {
         }
       }
     }
-    Example example = new Example(autoExample.value());
+    Class<?> targetClass = autoExample.value();
+    if (AutoExample.class.equals(targetClass)) {
+      try {
+        targetClass = Class.forName(autoExample.classFullName());
+      } catch (ClassNotFoundException e) {
+        throw new IllegalArgumentException("ClassNotFoundException: " +autoExample.classFullName());
+      }
+    }
+    Example example = new Example(targetClass);
     for (Integer key : Objects.requireNonNull(map).keySet()) {
       Example.Criteria criteria = example.or();
       List<FieldToCriterionHandlerMapping> fieldToCriterionHandlerMappings = map.get(key);

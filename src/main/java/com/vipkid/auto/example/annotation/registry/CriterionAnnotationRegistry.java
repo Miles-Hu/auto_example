@@ -35,39 +35,39 @@ import java.util.Set;
  */
 public class CriterionAnnotationRegistry {
 
-  private static Set<String> criterionAnnotatinSet = new HashSet<>();
+  private static Set<String> criterionAnnotationSet = new HashSet<>();
 
   static {
-    criterionAnnotatinSet.add(AndEqualTo.class.getName());
-    criterionAnnotatinSet.add(AndGreaterThan.class.getName());
-    criterionAnnotatinSet.add(AndGreaterThanOrEqualTo.class.getName());
-    criterionAnnotatinSet.add(AndIn.class.getName());
-    criterionAnnotatinSet.add(AndIsNotNull.class.getName());
-    criterionAnnotatinSet.add(AndIsNull.class.getName());
-    criterionAnnotatinSet.add(AndLessThan.class.getName());
-    criterionAnnotatinSet.add(AndLessThanOrEqualTo.class.getName());
-    criterionAnnotatinSet.add(AndLike.class.getName());
-    criterionAnnotatinSet.add(AndNotEqualTo.class.getName());
-    criterionAnnotatinSet.add(AndNotIn.class.getName());
-    criterionAnnotatinSet.add(AndNotLike.class.getName());
+    criterionAnnotationSet.add(AndEqualTo.class.getName());
+    criterionAnnotationSet.add(AndGreaterThan.class.getName());
+    criterionAnnotationSet.add(AndGreaterThanOrEqualTo.class.getName());
+    criterionAnnotationSet.add(AndIn.class.getName());
+    criterionAnnotationSet.add(AndIsNotNull.class.getName());
+    criterionAnnotationSet.add(AndIsNull.class.getName());
+    criterionAnnotationSet.add(AndLessThan.class.getName());
+    criterionAnnotationSet.add(AndLessThanOrEqualTo.class.getName());
+    criterionAnnotationSet.add(AndLike.class.getName());
+    criterionAnnotationSet.add(AndNotEqualTo.class.getName());
+    criterionAnnotationSet.add(AndNotIn.class.getName());
+    criterionAnnotationSet.add(AndNotLike.class.getName());
 
-    criterionAnnotatinSet.add(OrEqualTo.class.getName());
-    criterionAnnotatinSet.add(OrGreaterThan.class.getName());
-    criterionAnnotatinSet.add(OrGreaterThanOrEqualTo.class.getName());
-    criterionAnnotatinSet.add(OrIn.class.getName());
-    criterionAnnotatinSet.add(OrIsNotNull.class.getName());
-    criterionAnnotatinSet.add(OrIsNull.class.getName());
-    criterionAnnotatinSet.add(OrLessThan.class.getName());
-    criterionAnnotatinSet.add(OrLessThanOrEqualTo.class.getName());
-    criterionAnnotatinSet.add(OrLike.class.getName());
-    criterionAnnotatinSet.add(OrNotEqualTo.class.getName());
-    criterionAnnotatinSet.add(OrNotIn.class.getName());
-    criterionAnnotatinSet.add(OrNotLike.class.getName());
+    criterionAnnotationSet.add(OrEqualTo.class.getName());
+    criterionAnnotationSet.add(OrGreaterThan.class.getName());
+    criterionAnnotationSet.add(OrGreaterThanOrEqualTo.class.getName());
+    criterionAnnotationSet.add(OrIn.class.getName());
+    criterionAnnotationSet.add(OrIsNotNull.class.getName());
+    criterionAnnotationSet.add(OrIsNull.class.getName());
+    criterionAnnotationSet.add(OrLessThan.class.getName());
+    criterionAnnotationSet.add(OrLessThanOrEqualTo.class.getName());
+    criterionAnnotationSet.add(OrLike.class.getName());
+    criterionAnnotationSet.add(OrNotEqualTo.class.getName());
+    criterionAnnotationSet.add(OrNotIn.class.getName());
+    criterionAnnotationSet.add(OrNotLike.class.getName());
 
   }
 
   public static boolean contains(String annotationName) {
-    return criterionAnnotatinSet.contains(annotationName);
+    return criterionAnnotationSet.contains(annotationName);
   }
 
   public static boolean containsAnyOne(Annotation[] annotations) {

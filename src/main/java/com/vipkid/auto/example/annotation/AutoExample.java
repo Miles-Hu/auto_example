@@ -13,7 +13,9 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface AutoExample {
 
-  Class<?> value();
+  Class<?> value() default AutoExample.class ;
+
+  String classFullName() default "";
 
   boolean useSecondaryCache() default false;
 
