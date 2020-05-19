@@ -43,6 +43,10 @@ public class AutoExampleInterceptor implements Interceptor {
       return invocation.proceed();
     }
     Object parameter = args[1];
+    if(null == parameter){
+      //无参直接放行
+      return invocation.proceed();
+    }
     Object exampleParam = parameter;
     if (parameter instanceof Map) {
       //入参是多参数的情况下，mybatis会自动将参数组装成Map，这里写死为"example"
