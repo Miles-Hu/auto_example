@@ -54,6 +54,10 @@ public class AutoExampleInterceptor implements Interceptor {
       //tk-mybatis的多参数入参遵循这个规则
       Map parameterMap = (Map) parameter;
       exampleParam = parameterMap.get("example");
+        if (null == exampleParam) {
+            //无参直接放行
+            return invocation.proceed();
+        }
     }
     AutoExample autoExample = exampleParam.getClass().getAnnotation(AutoExample.class);
     //没有加@AutoExample修饰的参数不拦截
