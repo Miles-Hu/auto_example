@@ -80,7 +80,7 @@ Auto-example可以自动进行非null和空串判断，可以看到auto-example�
 ​    (≖ ◡ ≖)嘿嘿，auto-example提供了24个添加在字段上的注解（@AndLike(int)，@AndIn(int)，@AndGreaterThan(int)，@AndGreaterThanOrEqualTo(int)，@AndLessThan(int)，@AndLessThanOrEqualTo(int)，@AndIsNotNull(int)，@AndIsNull(int)，@AndNotLike(int)，@AndNotIn(int)，@AndNotEqualTo(int)，@AndEqualTo(int)，@OrLike(int)，@OrdIn(int)，@OrGreaterThan(int)，@OrGreaterThanOrEqualTo(int)，@OrLessThan(Integer)，@OrLessThanOrEqualTo(int)，@OrIsNotNull(int)，@OrIsNull(int)，@OrNotLike(int)，@OrNotIn(int)，@OrNotEqualTo(int)，@OrEqualTO(int)），跟Example$Criteria上面大部分方法对应起来，足够覆盖日常99%的开发需求，具体使用这些注解的简单案例参考本项目的测试项目auto_example_demo，项目地址：
 https://github.com/Miles-Hu/auto_example_demo
 
-下载该项目，使用IDEA打开，找到test/java目录下的com.fengxiao.auto.example.BasicFunctionTests类(对应的Controller是com.fengxiao.auto.example.controller.AutoExampleBasicController)，该类包含28个测试用例，尝试运行这些测试用例，并且观察项目运行打印的sql语句，能帮助你更好地理解和使用auto-example插件喔；😃
+下载该项目，使用IDEA打开，找到test/java目录下的com.freeperch.auto.example.BasicFunctionTests类(对应的Controller是com.freeperch.auto.example.controller.AutoExampleBasicController)，该类包含28个测试用例，尝试运行这些测试用例，并且观察项目运行打印的sql语句，能帮助你更好地理解和使用auto-example插件喔；😃
 
 其中test27()测试用例是updateByExampleSelective()的使用，该用例涉及到一个新注解@Ignore，该注解的含义是告知auto-example忽略该字段
 
@@ -88,9 +88,9 @@ like查询，auto-example自动会在参数后面加"%"，所以是模糊参数�
 
 in查询，目前只支持使用Collection，不支持使用数组，因为tk-mybatis的Example实现是不支持数组的；
 
-​    如果读者运行完上面的测试用例，会发现这些测试用例都是使用一个Example$Criteria完成的查询，如果我想要2个，3个，甚至更多Example$Criteria完成查询，该怎么办呢？还是在上面的auto-example-test项目中，尝试运行com.fengxiao.auto.example.AdvancedTests.test1()(对应的Controller是com.fengxiao.auto.example.api.AutoExampleAdvancedServiceApi)，并且仔细观察控制台打印的sql语句，会发现实现多个Example$Criteria完成查询也是非常简单的；
+​    如果读者运行完上面的测试用例，会发现这些测试用例都是使用一个Example$Criteria完成的查询，如果我想要2个，3个，甚至更多Example$Criteria完成查询，该怎么办呢？还是在上面的auto-example-test项目中，尝试运行com.freeperch.auto.example.AdvancedTests.test1()(对应的Controller是com.freeperch.auto.example.api.AutoExampleAdvancedServiceApi)，并且仔细观察控制台打印的sql语句，会发现实现多个Example$Criteria完成查询也是非常简单的；
 
-​    在com.fengxiao.auto.example.AdvancedTests中，test2()展示了如何完成orderBy查询，test3()展示了如何完成distinct查询，test4()展示了如何使用auto-example的二级缓存(一级缓存是默认开启的)，test5()展示了使用一级缓存、二级缓存、不使用auto-example的性能对比，在作者的机器上，刚开始运行时一级缓存性能较弱，二级缓存和不使用auto-example的性能几乎相同，随着项目运行时间增长，一级缓存性能开始变好，接近其他两者，test6()展示了auto-example跟PageHelper分页插件兼容使用，test7(), test8()则是入门示例的展示；
+​    在com.freeperch.auto.example.AdvancedTests中，test2()展示了如何完成orderBy查询，test3()展示了如何完成distinct查询，test4()展示了如何使用auto-example的二级缓存(一级缓存是默认开启的)，test5()展示了使用一级缓存、二级缓存、不使用auto-example的性能对比，在作者的机器上，刚开始运行时一级缓存性能较弱，二级缓存和不使用auto-example的性能几乎相同，随着项目运行时间增长，一级缓存性能开始变好，接近其他两者，test6()展示了auto-example跟PageHelper分页插件兼容使用，test7(), test8()则是入门示例的展示；
 
 ## 四、注意事项
 
@@ -100,8 +100,8 @@ in查询，目前只支持使用Collection，不支持使用数组，因为tk-my
 
 ​    Auto-example是基于mybatis的Interceptor实现的，Interceptor由mybatis的Configuration保存，Configuration保存在SqlSessionFactory中，所以auto-example的Interceptor实例是一个SqlSessionFactory只有一个的；
 
-​    一、二级缓存，由静态字段引用，第一次使用时加载完成，程序关闭被回收，一级缓存自动开启，且读者不能进行配置操作，二级缓存可以配置开启，参考com.fengxiao.auto.example.AdvancedTests.test4()；
+​    一、二级缓存，由静态字段引用，第一次使用时加载完成，程序关闭被回收，一级缓存自动开启，且读者不能进行配置操作，二级缓存可以配置开启，参考com.freeperch.auto.example.AdvancedTests.test4()；
 
 ## 六、最后  
 
-​    希望读者一定要运行完com.fengxiao.auto.example.BasicFunctionTests、com.fengxiao.auto.example.AdvancedTests上面的所有测试用例，这样才能非常熟练地使用auto-example；当然这些都只是作者想到的一些简单测试，读者还能在此基础上自由发挥创造力，将auto-example使用在更多的场景下，enjoy! 😋
+​    希望读者一定要运行完com.freeperch.auto.example.BasicFunctionTests、com.freeperch.auto.example.AdvancedTests上面的所有测试用例，这样才能非常熟练地使用auto-example；当然这些都只是作者想到的一些简单测试，读者还能在此基础上自由发挥创造力，将auto-example使用在更多的场景下，enjoy! 😋
