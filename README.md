@@ -77,9 +77,9 @@ Auto-example可以自动进行非null和空串判断，可以看到auto-example�
 ## 三、更多功能
 
 ​    如果读者观察仔细，会发现入门示例中的Example只使用了criteria.andEqualTo()方法构建Example，读者可能会问：如果我想要更加丰富的过滤条件怎么办呢？
-
 ​    (≖ ◡ ≖)嘿嘿，auto-example提供了24个添加在字段上的注解（@AndLike(int)，@AndIn(int)，@AndGreaterThan(int)，@AndGreaterThanOrEqualTo(int)，@AndLessThan(int)，@AndLessThanOrEqualTo(int)，@AndIsNotNull(int)，@AndIsNull(int)，@AndNotLike(int)，@AndNotIn(int)，@AndNotEqualTo(int)，@AndEqualTo(int)，@OrLike(int)，@OrdIn(int)，@OrGreaterThan(int)，@OrGreaterThanOrEqualTo(int)，@OrLessThan(Integer)，@OrLessThanOrEqualTo(int)，@OrIsNotNull(int)，@OrIsNull(int)，@OrNotLike(int)，@OrNotIn(int)，@OrNotEqualTo(int)，@OrEqualTO(int)），跟Example$Criteria上面大部分方法对应起来，足够覆盖日常99%的开发需求，具体使用这些注解的简单案例参考本项目的测试项目auto_example_demo，项目地址：
 https://github.com/Miles-Hu/auto_example_demo
+
 下载该项目，使用IDEA打开，找到test/java目录下的com.fengxiao.auto.example.BasicFunctionTests类(对应的Controller是com.fengxiao.auto.example.controller.AutoExampleBasicController)，该类包含28个测试用例，尝试运行这些测试用例，并且观察项目运行打印的sql语句，能帮助你更好地理解和使用auto-example插件喔；😃
 
 其中test27()测试用例是updateByExampleSelective()的使用，该用例涉及到一个新注解@Ignore，该注解的含义是告知auto-example忽略该字段
