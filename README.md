@@ -9,7 +9,7 @@
 
 ```xml
 <dependency>
-  <groupId>com.vipfengxiao</groupId>
+  <groupId>com.freeperch</groupId>
   <artifactId>auto-example-spring-boot-starter</artifactId>
   <version>1.0.2-SNAPSHOT</version>
 </dependency>
