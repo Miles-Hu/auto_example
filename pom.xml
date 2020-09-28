@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.vipfengxiao</groupId>
+    <groupId>com.freeperch</groupId>
     <artifactId>auto-example-spring-boot-starter</artifactId>
     <packaging>jar</packaging>
     <version>1.0.4-SNAPSHOT</version>
@@ -60,19 +60,4 @@
             </plugin>
         </plugins>
     </build>
-    <distributionManagement>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>vipkid Team Repository snapshots</name>
-            <url>
-                http://maven.vipkid.com.cn/nexus/content/repositories/snapshots/
-            </url>
-        </snapshotRepository>
-        <repository>
-            <id>releases</id>
-            <name>releases</name>
-            <url>http://maven.vipkid.com.cn/nexus/content/repositories/releases/</url>
-        </repository>
-    </distributionManagement>
-
 </project>
