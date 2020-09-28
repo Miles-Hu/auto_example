@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.vipkid.auto.example.AutoExampleAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.freeperch.auto.example.AutoExampleAutoConfiguration
