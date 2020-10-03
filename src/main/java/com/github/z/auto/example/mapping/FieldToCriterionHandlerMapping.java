@@ -14,7 +14,7 @@ import java.lang.reflect.Field;
 
 /**
  * @author hujun
- * @date 2019-08-16 16:06
+ * date 2019-08-16 16:06
  */
 public class FieldToCriterionHandlerMapping {
 

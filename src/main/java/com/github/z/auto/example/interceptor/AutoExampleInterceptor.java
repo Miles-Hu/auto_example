@@ -24,7 +24,7 @@ import java.util.Properties;
  * 将入参自动转成Example的核心拦截器
  *
  * @author hujun
- * @date 2019-08-16 15:03
+ * date 2019-08-16 15:03
  */
 @Intercepts({
     @Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class}),

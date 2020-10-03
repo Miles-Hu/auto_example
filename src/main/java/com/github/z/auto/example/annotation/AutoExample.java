@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * @author hujun
- * @date 2019-08-16 11:46
+ * date 2019-08-16 11:46
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

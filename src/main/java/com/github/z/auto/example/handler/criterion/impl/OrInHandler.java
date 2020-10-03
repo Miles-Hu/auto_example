@@ -7,7 +7,7 @@ import java.util.Collection;
 
 /**
  * @author hujun
- * @date 2019-08-16 14:24
+ * date 2019-08-16 14:24
  */
 public class OrInHandler extends CriterionHandler {
 

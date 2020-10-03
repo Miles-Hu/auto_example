@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * @author hujun
- * @date 2019-08-16 11:59
+ * date 2019-08-16 11:59
  */
 public abstract class CriterionHandler {
 

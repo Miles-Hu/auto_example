@@ -6,7 +6,7 @@ import com.github.z.auto.example.generator.SimpleExampleGenerator;
 
 /**
  * @author hujun
- * @date 2019-08-16 17:03
+ * date 2019-08-16 17:03
  */
 public abstract class ExampleGeneratorBuilder {
 

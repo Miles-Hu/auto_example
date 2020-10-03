@@ -7,7 +7,7 @@ import org.apache.ibatis.cache.impl.PerpetualCache;
 
 /**
  * @author hujun
- * @date 2019-08-16 15:45
+ * date 2019-08-16 15:45
  */
 public class CacheBuilder {
 

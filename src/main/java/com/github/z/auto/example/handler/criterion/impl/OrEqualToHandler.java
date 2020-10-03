@@ -5,7 +5,7 @@ import tk.mybatis.mapper.entity.Example;
 
 /**
  * @author hujun
- * @date 2019-08-16 14:24
+ * date 2019-08-16 14:24
  */
 public class OrEqualToHandler extends CriterionHandler {
 
