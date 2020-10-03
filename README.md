@@ -29,17 +29,10 @@ public class ManyEqualToDto {
   private String updatePerson;
   //getter and setter
 }
-或者
+或者使用类全名
 @AutoExample(classFullName="com.github.Resource")
 public class ManyEqualToDto {
-  private String name;
-  private String chineseName;
-  private Integer parentId;
-  private String description;
-  private Integer ownerId;
-  private String ownerEmail;
-  private String updatePerson;
-  //getter and setter
+...
 }
 ```
 
@@ -48,6 +41,11 @@ public class ManyEqualToDto {
 ```java
 @PostMapping("present/many/equal/to")  
 public PageResponse simpleManyEqualToTest(@RequestBody ManyEqualToDto manyEqualToDto) {
+    return PageResponse.ok(adamResourceMapper.selectByExample(manyEqualToDto));
+  }
+也支持@GetMapping
+@GetMapping("present/many/equal/to")  
+public PageResponse simpleManyEqualToTest(ManyEqualToDto manyEqualToDto) {
     return PageResponse.ok(adamResourceMapper.selectByExample(manyEqualToDto));
   }
 ```
@@ -84,7 +82,9 @@ public PageResponse simpleNormalManyEqualToTest(@RequestBody NormalManyEqualToDt
   }
   或使用GetMapping:
 @GetMapping("present/normal/many/equal/to")
-public PageResponse simpleNormalManyEqualToTest(NormalManyEqualToDto rDto) {}
+public PageResponse simpleNormalManyEqualToTest(NormalManyEqualToDto rDto) {
+...
+}
 ```
 
 Auto-example可以自动进行非null和空串判断，可以看到auto-example帮我们节省了大量重复的判断代码，自动生成Example在某种程度上可以理解为自动生成动态sql，有了auto-example，从此不用再写这些烦人的if-else来手动生成动态sql啦；解放你的双手🤲O(∩_∩)O~~；
@@ -92,12 +92,12 @@ Auto-example可以自动进行非null和空串判断，可以看到auto-example�
 ## 三、更多功能
 
 ​    如果读者观察仔细，会发现入门示例中的Example只使用了criteria.andEqualTo()方法构建Example，读者可能会问：如果我想要更加丰富的过滤条件怎么办呢？
-​    (≖ ◡ ≖)嘿嘿，auto-example提供了24个添加在字段上的注解（@AndLike(int)，@AndIn(int)，@AndGreaterThan(int)，@AndGreaterThanOrEqualTo(int)，@AndLessThan(int)，@AndLessThanOrEqualTo(int)，@AndIsNotNull(int)，@AndIsNull(int)，@AndNotLike(int)，@AndNotIn(int)，@AndNotEqualTo(int)，@AndEqualTo(int)，@OrLike(int)，@OrdIn(int)，@OrGreaterThan(int)，@OrGreaterThanOrEqualTo(int)，@OrLessThan(Integer)，@OrLessThanOrEqualTo(int)，@OrIsNotNull(int)，@OrIsNull(int)，@OrNotLike(int)，@OrNotIn(int)，@OrNotEqualTo(int)，@OrEqualTO(int)），跟Example$Criteria上面大部分方法对应起来，足够覆盖日常99%的开发需求，具体使用这些注解的简单案例参考本项目的测试项目auto_example_demo，项目地址：
+​    (≖ ◡ ≖)嘿嘿，auto-example提供了很多个添加在字段上的注解（@AndLike(int)，@AndIn(int)，@AndGreaterThan(int)，@AndGreaterThanOrEqualTo(int)，@AndLessThan(int)，@AndLessThanOrEqualTo(int)，@AndIsNotNull(int)，@AndIsNull(int)，@AndNotLike(int)，@AndNotIn(int)，@AndNotEqualTo(int)，@AndEqualTo(int)，@OrLike(int)，@OrdIn(int)，@OrGreaterThan(int)，@OrGreaterThanOrEqualTo(int)，@OrLessThan(Integer)，@OrLessThanOrEqualTo(int)，@OrIsNotNull(int)，@OrIsNull(int)，@OrNotLike(int)，@OrNotIn(int)，@OrNotEqualTo(int)，@OrEqualTO(int)），跟Example$Criteria上面大部分方法对应起来，足够覆盖日常99%的开发需求，具体使用这些注解的简单案例参考本项目的测试项目auto_example_demo，项目地址：
 https://github.com/Miles-Hu/auto_example_demo
 
-下载该项目，使用IDEA打开，找到test/java目录下的com.freeperch.auto.example.BasicFunctionTests类(对应的Controller是com.freeperch.auto.example.controller.AutoExampleBasicController)，该类包含28个测试用例，尝试运行这些测试用例，并且观察项目运行打印的sql语句，能帮助你更好地理解和使用auto-example插件喔；😃
+下载该项目，使用IDEA打开，找到test/java目录下的com.freeperch.auto.example.BasicFunctionTests类(对应的Controller是com.freeperch.auto.example.controller.AutoExampleBasicController)，该类包含多个测试用例，尝试运行这些测试用例，并且观察项目运行打印的sql语句，能帮助你更好地理解和使用auto-example插件喔；😃
 
-其中test27()测试用例是updateByExampleSelective()的使用，该用例涉及到一个新注解@Ignore，该注解的含义是告知auto-example忽略该字段
+其中涉及到一个新注解@Ignore，该注解的含义是告知auto-example忽略该字段
 
 like查询，auto-example自动会在参数后面加"%"，所以是模糊参数的suffix查询，如果prefix也想模糊，需要读者自己在参数前面加"%"；
 
@@ -119,4 +119,5 @@ in查询，目前只支持使用Collection，不支持使用数组，因为tk-my
 
 ## 六、最后  
 
-​    希望读者一定要运行完com.freeperch.auto.example.BasicFunctionTests、com.freeperch.auto.example.AdvancedTests上面的所有测试用例，这样才能非常熟练地使用auto-example；当然这些都只是作者想到的一些简单测试，读者还能在此基础上自由发挥创造力，将auto-example使用在更多的场景下，enjoy! 😋
+​    希望读者一定要运行完com.freeperch.auto.example.BasicFunctionTests、com.freeperch.auto.example.AdvancedTests上面的所有测试用例，这样才能非常熟练地使用auto-example；当然这些都只是作者想到的一些简单测试，读者还能在此基础上自由发挥创造力，将auto-example使用在更多的场景下，有问题随时联系miles.j.hoo@gmail.com，enjoy! 😋
+
