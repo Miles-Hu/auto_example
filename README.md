@@ -9,16 +9,28 @@
 
 ```xml
 <dependency>
-  <groupId>com.freeperch</groupId>
+  <groupId>com.github.miles-hu</groupId>
   <artifactId>auto-example-spring-boot-starter</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.2.4</version>
 </dependency>
 ```
 
-2、在需要自动生成Example的RequestDto类上面加上@AutoExample()注解，并在注解上面指明跟数据库表对应的Bean的Class对象，假设有如下RequestDto(定义：springMVC将json串反序列化到RequestDto上面)：
+2、在需要自动生成Example的RequestDto类上面加上@AutoExample()注解，并在注解上面指明跟数据库表对应的Bean的Class对象(或者类全名)，假设有如下RequestDto(定义：springMVC将json串反序列化到RequestDto上面)：
 
 ```java
-@AutoExample(AdamResource.class)
+@AutoExample(Resource.class)
+public class ManyEqualToDto {
+  private String name;
+  private String chineseName;
+  private Integer parentId;
+  private String description;
+  private Integer ownerId;
+  private String ownerEmail;
+  private String updatePerson;
+  //getter and setter
+}
+或者
+@AutoExample(classFullName="com.github.Resource")
 public class ManyEqualToDto {
   private String name;
   private String chineseName;
@@ -70,6 +82,9 @@ public PageResponse simpleNormalManyEqualToTest(@RequestBody NormalManyEqualToDt
     }
     return PageResponse.ok(adamResourceMapper.selectByExample(example));
   }
+  或使用GetMapping:
+@GetMapping("present/normal/many/equal/to")
+public PageResponse simpleNormalManyEqualToTest(NormalManyEqualToDto rDto) {}
 ```
 
 Auto-example可以自动进行非null和空串判断，可以看到auto-example帮我们节省了大量重复的判断代码，自动生成Example在某种程度上可以理解为自动生成动态sql，有了auto-example，从此不用再写这些烦人的if-else来手动生成动态sql啦；解放你的双手🤲O(∩_∩)O~~；
