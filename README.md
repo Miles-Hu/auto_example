@@ -5,7 +5,7 @@
 
 ## 二、入门示例
 
-1、引入auto-example-spring-boot-starter包，代码如下，版本号目前可以选择1.0.2-SNAPSHOT，在引入本包之前，确保项目中已经有了mybatis, tk-mybatis的包，尽量使用最新版本：
+1、引入auto-example-spring-boot-starter包，代码如下，版本号目前可以选择1.2.4，在引入本包之前，确保项目中已经有了mybatis, tk-mybatis的包，尽量使用最新版本：
 
 ```xml
 <dependency>
