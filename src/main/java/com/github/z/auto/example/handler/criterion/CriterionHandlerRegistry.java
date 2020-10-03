@@ -54,7 +54,7 @@ import java.util.Map;
 
 /**
  * @author hujun
- * @date 2019-08-16 12:01
+ * date 2019-08-16 12:01
  */
 public class CriterionHandlerRegistry {
 

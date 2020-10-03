@@ -31,7 +31,7 @@ import java.util.Set;
 
 /**
  * @author hujun
- * @date 2019-08-16 16:20
+ * date 2019-08-16 16:20
  */
 public class CriterionAnnotationRegistry {
 

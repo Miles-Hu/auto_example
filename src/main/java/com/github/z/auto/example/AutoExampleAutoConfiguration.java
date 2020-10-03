@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * @author hujun
- * @date 2019-08-18 11:15
+ * date 2019-08-18 11:15
  */
 @Configuration
 @ConditionalOnBean(SqlSessionFactory.class)

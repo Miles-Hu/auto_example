@@ -22,7 +22,7 @@ import java.util.Objects;
 
 /**
  * @author hujun
- * @date 2019-08-16 15:37
+ * date 2019-08-16 15:37
  */
 public class SimpleExampleGenerator implements ExampleGenerator {
 

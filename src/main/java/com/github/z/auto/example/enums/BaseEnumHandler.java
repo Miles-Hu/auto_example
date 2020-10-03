@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 /**
  * @author hujun
- * @date 2019-08-16 20:22
+ * date 2019-08-16 20:22
  */
 public class BaseEnumHandler<T extends BaseEnum> extends BaseTypeHandler<T> {
 
