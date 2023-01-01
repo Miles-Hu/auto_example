@@ -5,13 +5,13 @@ The main function of this plug-in is to complete the automatic generation of Exa
 
 ## 二、Example
 
-1、Introduce the auto-example-spring-boot-starter package, the code is as follows, the version number can currently choose 1.2.5, before introducing this package, make sure that the project already has mybatis, tk-mybatis packages, try to use the latest version:
+1、Introduce the auto-example-spring-boot-starter package, the code is as follows, the version number can currently choose 1.2.4, before introducing this package, make sure that the project already has mybatis, tk-mybatis packages, try to use the latest version:
 
 ```xml
 <dependency>
   <groupId>com.github.miles-hu</groupId>
   <artifactId>auto-example-spring-boot-starter</artifactId>
-  <version>1.2.5</version>
+  <version>1.2.4</version>
 </dependency>
 ```
 
